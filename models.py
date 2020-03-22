@@ -15,3 +15,15 @@ class Perfil(object):
 
     def obter_curtidas(self):
         return self.__curtidas
+
+
+# -*- coding: UTF-8 -*-
+class Perfil_Vip(Perfil):
+    'Classe padrão para perfis de usuários VIPs'
+
+    def __init__(self, nome, telefone, empresa, apelido):
+        super(Perfil_Vip, self).__init__(nome, telefone, empresa)
+        self.apelido = apelido
+
+    def obter_creditos(self):
+        return super(Perfil_Vip, self).obter_curtidas() * 10.0
