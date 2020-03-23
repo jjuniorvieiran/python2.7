@@ -3,6 +3,9 @@ class Perfil(object):
     'Classe padrão para perfis de usuários'
 
     def __init__(self, nome, telefone, empresa):
+        if(len(nome) < 3):
+            raise Argumento_Invalido_Error('Nome deve ter pelo menos 3 caracteres')
+
         self.nome = nome
         self.telefone = telefone
         self.empresa = empresa
@@ -48,3 +51,12 @@ class Perfil_Vip(Perfil):
 
     def obter_creditos(self):
         return super(Perfil_Vip, self).obter_curtidas() * 10.0
+
+
+class Argumento_Invalido_Error(Exception):
+
+    def __init__(self, mensagem):
+      self.mensagem = mensagem
+
+    def __str__(self):
+      return repr(self.mensagem)
